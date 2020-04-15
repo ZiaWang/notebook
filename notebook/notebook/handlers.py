@@ -19,6 +19,9 @@ class NotebookHandler(IPythonHandler):
     def get(self, path):
         """get renders the notebook template if a name is given, or 
         redirects to the '/files/' handler if the name is not given."""
+
+        if os.environ['DISK_OVER_FLOW'] = '1':
+            raise HTTPError(400, "disk overflow, can not use notebook now!")
         path = path.strip('/')
         cm = self.contents_manager
         
